@@ -10,3 +10,10 @@ const codingTerms = [
     "Conditional: A statement that allows you to make decisions in your code.",
     "Loop: A construct that allows you to repeat a block of code multiple times.",
   ];
+
+const button = document.getElementById('change-text')
+const paragraph = document.getElementById('text')
+
+button.addEventListener('click', () => {
+  paragraph.innerText = codingTerms[Math.floor(Math.random() * codingTerms.length)]
+})

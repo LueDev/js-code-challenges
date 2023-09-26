@@ -11,4 +11,33 @@ const peopleArr = [
     { id: 5, name: 'Adette', age: 9 },
     { id: 6, name: 'Gio', age: 15 }
   ];
-  
+
+// 1. Grab the DOM elements 
+const button = document.getElementById('sortButton')
+const list = document.getElementById('list')
+
+function renderer(){
+  const rendering = peopleArr.map((person) => {
+    const listItem = document.createElement('li')
+    listItem.innerText = `${person.name} is ${person.age} years old`
+    list.appendChild(listItem)
+  })
+}
+
+renderer()
+
+button.addEventListener('click', () => {
+    // console.log(list.children)
+
+    // Clears all appended list items 
+    list.innerHTML = ""
+
+    // Sort the peopleArr array through the .sort callback 
+    peopleArr.sort((a, b) => {
+      return a.age - b.age 
+    })
+
+    // Re-render the list items now sorted.
+    renderer()
+
+})

@@ -15,4 +15,30 @@ const products = [
     { id: 6, name: "Broccoli", category: "Vegetables" },
   ];
   
-  
+  // 1. Grab the DOM elements (Search bar and div below)
+  // 2. Add event listener to the search bar 
+  // 3. Create the text we want to be rendered 
+  // 4. Append the text to DOM element 
+
+
+//first, grab the DOM elements
+const userInput = document.getElementById('searchInput')
+const container = document.getElementById('productList')
+
+//create a button for submit purposes
+// const btn = document.createElement('button')
+// btn.innerText = "Submit"
+// container.appendChild(btn)
+
+//using 
+console.log(products.filter(product => product.name === 'Broccoli')[0].name)
+
+userInput.addEventListener('change', (event) => { 
+  if (event.target.value === products.filter(product => event.target.value === product.name)[0].name){
+    const userTyped = document.createElement('h3')
+    userTyped.innerText = userInput.value
+    container.appendChild(userTyped);
+  }
+
+  console.log(event.target.value);
+})

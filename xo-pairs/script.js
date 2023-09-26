@@ -10,3 +10,24 @@ xoCheck("zpzpzpp") => true
 xoCheck("zzoo") => false
 
 */
+
+function xoCheck(str){
+    const charArray = Array.from(str.toLowerCase())
+    const countObj = {}
+
+    const xoCounter = charArray.map((char) => {
+        if(countObj[char]){
+            countObj[char] += 1
+        } else {
+            countObj[char] = 1
+        }
+    })
+
+    return console.log(countObj['x'] === countObj['o'] ? true : false)
+}
+
+xoCheck("ooxx") 
+xoCheck("xooxx") 
+xoCheck("ooxXm") 
+xoCheck("zpzpzpp")
+xoCheck("zzoo") 
