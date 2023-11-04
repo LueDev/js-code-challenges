@@ -17,15 +17,42 @@ const books = [
     { title: 'The Alchemist', author: 'Paulo Coelho', genre: 'Fiction' },
     { title: 'The Odyssey', author: 'Homer', genre: 'Epic Poetry' },
   ];
-  
+
+// STEP 1. Grab the DOM Elements we will interact with.
+// HINT: It's best to make DOM interacting variables global
+const userInput = document.getElementById('genre-input')
+const button = document.getElementById('filter-button')
+// const container = document.getElementById('book-list') 
+
 document.addEventListener("DOMContentLoaded", () => {
     renderBookList(books)
+
+    // STEP 3. Add our button event listener with click and anonymous function
+    button.addEventListener('click', () => {
+
+        const selectedGenre = userInput.value.toLowerCase()
+
+        if(selectedGenre) {
+            const filteredBooks = filterBooks(selectedGenre)
+            renderBookList(filteredBooks)
+
+            // Show a table of the filtered books in the console
+            console.table(filteredBooks)
+        }
+    })
+
+
 })
 
 function filterBooks(genre) {
 // Implement your logic here
 // Use the filter method to filter the books array
 // Return the filtered array
+
+//STEP 2. declare the filter function where only books with the correct 
+// genre entered by the user will be returned 
+const list = books.filter((book) => book.genre.toLowerCase() === genre)
+return list
 }
 
 function renderBookList(books) {
